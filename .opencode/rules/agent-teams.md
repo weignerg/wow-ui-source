@@ -15,12 +15,12 @@
 
 ## Issue <-> PR workflow (enforced for everyone)
 1. **Issue first** — every task is tracked by a GitHub Issue (`gh issue create`); the issue is the unit of work.
-2. **Branch + worktree** — the orchestrator provisions `<type>/issue-<n>-<desc>` in an isolated worktree at `~/agy/worktrees/<branch>` before any work; the repository root stays anchored on `develop`.
+2. **Branch + worktree** — the orchestrator provisions `<type>/issue-<n>-<desc>` in an isolated worktree at `.opencode/worktrees/<branch>` before any work; the repository root stays anchored on `forever-documented`.
 3. **Implement** — `worker`/`tester` (with `grunt`/`scout`) make changes and Conventional Commits in the worktree.
-4. **Push + PR** — push to origin and open a PR targeting `develop` with `Closes #<issue>`.
+4. **Push + PR** — push to origin and open a PR targeting `forever-documented` with `Closes #<issue>`.
 5. **Review loop** — `reviewer` audits; critiques return to `worker`/`tester` as commits; the two-key gate gates merge.
 6. **Correlate issues/PRs** — an issue closes only if the PR fully satisfies scope (post a note on the issue for any remaining gaps).
-7. **Sync at head** — at completion, `git fetch origin` + rebase the worktree branch onto `origin/develop`; the root stays on `develop`. Force-push is disallowed.
+7. **Sync at head** — at completion, `git fetch origin` + rebase the worktree branch onto `origin/forever-documented`; the root stays on `forever-documented`. Force-push is disallowed.
 
 ## Team Protocol (orchestrator dispatches)
 - Each subagent ends its reply with `Result`, `Evidence`, `Requests for orchestrator`, and `Blockers / questions for the human`.

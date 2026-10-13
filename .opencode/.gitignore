@@ -1,0 +1,11 @@
+node_modules
+package.json
+package-lock.json
+bun.lock
+# Local git worktrees (not committed)
+worktrees/
+# ColBERT build artifact
+vault/.index/
+
+# Python bytecode cache (do not commit)
+__pycache__/

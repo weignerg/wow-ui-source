@@ -39,7 +39,9 @@ This reindexes `<repo>/.opencode/vault`, where `<repo>` is the repo root
 - `VAULT_PATH=/path/to/vault .opencode/tools/reindex_vault.sh` — reindex a
   specific vault directory.
 - `ENGINE_REPO=/path/to/engine/host .opencode/tools/reindex_vault.sh` — point
-  the reindexer at a different ColBERT engine host.
+  the reindexer at a different ColBERT engine host. The ColBERT engine is not
+  shipped in-repo, so on other machines set `ENGINE_REPO=<path-to-open-code-harness>`
+  to point at the engine checkout (on this host it is auto-resolved).
 
 ## How to search
 
