@@ -10,7 +10,7 @@ class GitHubPRAutomation:
     def __init__(self, gh_bin: str = "gh"):
         self.gh_bin = gh_bin
 
-    def create_draft_pr(self, title: str, body: str, base: str = "develop") -> str:
+    def create_draft_pr(self, title: str, body: str, base: str = "forever-documented") -> str:
         cmd = [self.gh_bin, "pr", "create", "--draft", "--base", base, "--title", title, "--body", body]
         proc = subprocess.run(cmd, capture_output=True, text=True, check=True)
         return proc.stdout.strip()

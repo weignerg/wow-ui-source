@@ -36,8 +36,11 @@ base framework this module depends on.
   button finishes. Because the frame itself has no appearance of its own, its
   busy-or-idle state is felt only as the visible blinks starting and stopping
   across the buttons.
-- **Stopping a button mid-pulse:** its highlight is turned off immediately, and
-  it no longer keeps the shared pulse frame active.
+- **Stopping a button mid-pulse:** it stops being tracked, so its blink is no
+  longer driven, and it no longer keeps the shared pulse frame active; the
+  shared pulse frame then re-evaluates whether it should stay shown. The button's
+  highlight itself is not forced off by StopPulse, so a still-locked highlight may
+  remain lit until it next toggles.
 
 ## Essential Functions
 
@@ -50,8 +53,10 @@ base framework this module depends on.
 - **`ButtonPulse_OnUpdate`** — every moment it advances each pulsing button's
   remaining time and flips its highlight on/off at the correct interval,
   removing any button whose time has run out.
-- **`ButtonPulse_StopPulse(button)`** — stops a button's blink and turns off its
-  highlight right away.
+- **`ButtonPulse_StopPulse(button)`** — stops tracking a button's blink (removing
+  it from the pulse list) and re-evaluates the shared pulse frame. It does **not**
+  force the button's highlight off immediately; the blink simply stops being
+  driven, so a still-locked highlight may remain lit until it next toggles.
 
 ## Linked Components
 
