@@ -24,7 +24,7 @@
       "command": [
         "sh",
         "-c",
-        "PY=\"${HOME}/.local/share/opencode-sglang-stack/venv/bin/python\"; if [ ! -x \"$PY\" ]; then PY=\"python3\"; fi; exec \"$PY\" -m harness.mcp.vault_server"
+        "PY=\"${HOME}/.local/share/opencode-sglang-stack/venv/bin/python\"; if [ ! -x \"$PY\" ]; then PY=\"python3\"; fi; if ! \"$PY\" -c \"import harness.mcp.vault_server\" >/dev/null 2>&1; then echo \"ERROR: harness.mcp.vault_server is not importable (open-code-harness engine not installed or venv missing). See .opencode/DEPENDENCIES.md.\" >&2; exit 2; fi; exec \"$PY\" -m harness.mcp.vault_server"
       ],
       "enabled": true
     },
@@ -33,7 +33,7 @@
       "command": [
         "sh",
         "-c",
-        "PY=\"${HOME}/.local/share/opencode-sglang-stack/venv/bin/python\"; if [ ! -x \"$PY\" ]; then PY=\"python3\"; fi; exec \"$PY\" -m harness.mcp.worktree_server"
+        "PY=\"${HOME}/.local/share/opencode-sglang-stack/venv/bin/python\"; if [ ! -x \"$PY\" ]; then PY=\"python3\"; fi; if ! \"$PY\" -c \"import harness.mcp.worktree_server\" >/dev/null 2>&1; then echo \"ERROR: harness.mcp.worktree_server is not importable (open-code-harness engine not installed or venv missing). See .opencode/DEPENDENCIES.md.\" >&2; exit 2; fi; exec \"$PY\" -m harness.mcp.worktree_server"
       ],
       "enabled": true
     }

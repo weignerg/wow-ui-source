@@ -18,7 +18,7 @@ off cleanly once the job is done.
 The module is intentionally small: it keeps a list of the buttons that are
 currently blinking, and it relies on one shared, otherwise-invisible *pulse
 frame* as a single timer that advances all of them together. Every button that
-blinked is a standard FrameXML button built on `[[Blizzard_FrameXMLBase]]`, the
+blinked is a standard FrameXML button built on `Blizzard_FrameXMLBase`, the
 base framework this module depends on.
 
 ## Key Visual Behaviors
@@ -60,17 +60,17 @@ base framework this module depends on.
 
 ## Linked Components
 
-- **`[[Blizzard_FrameXMLBase]]`** — the base FrameXML framework this module
+- **`Blizzard_FrameXMLBase`** — the base FrameXML framework this module
   depends on; the buttons it makes blink are standard FrameXML buttons.
 - **The shared pulse frame** — the single, otherwise-invisible frame that runs
   the timing loop and is shown or hidden based on how many buttons are pulsing.
 - **The button highlight system** — the per-button highlight overlay that is
   toggled on and off to create the visible blink. It is part of the standard
-  FrameXML button appearance family built on `[[Blizzard_FrameXMLBase]]`.
+  FrameXML button appearance family built on `Blizzard_FrameXMLBase`.
 
 ## Rules
 
 - Describe the front-end outcome, not the Lua: this module only cares about
   making highlights blink and keeping the shared pulse frame busy or idle.
 - All cross-references use Obsidian `[[Module]]` syntax (see
-  `[[Blizzard_FrameXMLBase]]`).
+  `Blizzard_FrameXMLBase`).
