@@ -1,5 +1,11 @@
 # OpenCode AI Agent System Charter & Instructions
 
+> ## Source / attribution
+> The harness in this file is **AGPL-3.0-derived** material copied from the
+> upstream **open-code-harness** project, with local enhancements noted
+> in-place. Copyright (C) 2026 weignerg; License: **GNU AGPL-3.0-only**. See
+> `.opencode/NOTICE.md` and the full text at `.opencode/AGPL-3.0-LICENSE`.
+
 > ## Repo context (wow-ui-source)
 > This repo-local AGENTS.md is AUTHORITATIVE for wow-ui-source. The global
 > `~/.config/opencode/AGENTS.md` is a compatible baseline; where they differ,
