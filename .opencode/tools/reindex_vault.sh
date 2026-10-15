@@ -15,8 +15,10 @@
 #   VAULT_PATH   full path to the vault to reindex (overrides auto-detection).
 #   ENGINE_REPO  path to the host repo that contains the ColBERT engine
 #                (harness/memory/colbert_engine.py). Override for portability;
-#                if unset the script auto-detects it, then falls back to the
-#                documented host path below.
+#                if unset the script auto-detects it by scanning upward from
+#                this script. If neither a set ENGINE_REPO nor a parent dir
+#                with the engine module is found, the script errors out
+#                (reference .opencode/DEPENDENCIES.md).
 # ==============================================================================
 set -euo pipefail
 
@@ -30,8 +32,10 @@ REPO_ROOT="$(git rev-parse --show-toplevel 2>/dev/null || pwd)"
 
 # --- Resolve the ColBERT engine -------------------------------------------------
 # ENGINE_REPO overrides the auto-detection for portability. If unset, scan
-# upward from this script looking for the engine module. The hardcoded path
-# is only a documented fallback for the host where this repo lives.
+# upward from this script looking for the engine module. If neither a set
+# ENGINE_REPO nor a parent dir containing the engine module is found, ENGINE_DIR
+# is left empty and the script errors out (it is a hard external dependency;
+# see .opencode/DEPENDENCIES.md). No host-specific path is hard-coded.
 ENGINE_DIR="${ENGINE_REPO:-}"
 if [ -z "$ENGINE_DIR" ]; then
     dir="$SCRIPT_DIR"
@@ -42,11 +46,14 @@ if [ -z "$ENGINE_DIR" ]; then
         fi
         dir="$parent"
     done
-    if [ ! -f "${dir}/harness/memory/colbert_engine.py" ]; then
-        # Documented fallback: the ColBERT engine host location on this machine.
-        ENGINE_DIR="/WHNAS/agy/git/open-code-harness"
-    else
+    if [ -f "${dir}/harness/memory/colbert_engine.py" ]; then
         ENGINE_DIR="$dir"
+    else
+        ENGINE_DIR=""
+        echo "ERROR: ColBERT engine not found (no harness/memory/colbert_engine.py)." >&2
+        echo "       Set ENGINE_REPO=<path-to-open-code-harness> or install the engine." >&2
+        echo "       (see .opencode/DEPENDENCIES.md)" >&2
+        exit 1
     fi
 fi
 

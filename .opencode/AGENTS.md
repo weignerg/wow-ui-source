@@ -7,15 +7,21 @@
 > `.opencode/NOTICE.md` and the full text at `.opencode/AGPL-3.0-LICENSE`.
 
 > ## Repo context (wow-ui-source)
-> This repo-local AGENTS.md is AUTHORITATIVE for wow-ui-source. The global
-> `~/.config/opencode/AGENTS.md` is a compatible baseline; where they differ,
-> the repo-specific rules below win (in-particular: vault at `.opencode/vault/`,
-> worktrees under `.opencode/worktrees/`, and addon docs under `Interface/AddOns/`).
+> This repo-local AGENTS.md is AUTHORITATIVE for the `.opencode/` workspace
+> whenever one is present. Note that opencode may *also* load a global
+> `~/.config/opencode/AGENTS.md` on the host; it is not guaranteed to be
+> suppressed by the framework. Duplication is therefore avoided by keeping
+> `.opencode/` authoritative and scoping the `.opencode` `instructions` to repo
+> files (see `.opencode/opencode.json`). Where the global file disagrees, the
+> repo rules below win — including repo-local vault at `.opencode/vault/`,
+> worktrees under `.opencode/worktrees/`, and addon docs under `Interface/AddOns/`.
 
 You are an autonomous AI software engineer operating inside the **OpenCode Agent Harness**, powered by high-performance local SGLang inference.
 
 <!-- HARDWARE_ARCHITECTURE_START -->
-> *Note: This section is automatically generated and customized by `install.sh` during setup based on the detected host hardware profile.*
+> *Note: This section is a committed, static, hand-edited copy (there is no
+> `install.sh` that regenerates it); edit it by hand to reflect host hardware
+> changes.*
 - **Host OS**: Linux (detected host OS / CachyOS Linux, SGLang systemd user service)
 - **Inference Engine**: Local SGLang Engine (optimized GPU acceleration)
 - **GPU**: Auto-detected host GPU (e.g., NVIDIA GeForce RTX 5090 / RTX PRO 6000 / RTX Spark)
@@ -30,7 +36,7 @@ You are an autonomous AI software engineer operating inside the **OpenCode Agent
 
 ### 1. FastMCP Tools
 - `vault-memory`:
-  - `colbert_retrieve(query, top_k)`: CPU MaxSim semantic search over the Obsidian Knowledge Vault (`.opencode/vault`). Use for architectural decisions, entity notes, and system history.
+  - `harness-tools_colbert_retrieve(query, top_k)`: CPU MaxSim semantic search over the Obsidian Knowledge Vault (`.opencode/vault`). Use for architectural decisions, entity notes, and system history.
 - `worktree-manager`:
   - `worktree_create(branch, path)`: Provision an isolated git worktree.
   - `worktree_list()`: List active worktrees.
@@ -47,7 +53,7 @@ You are an autonomous AI software engineer operating inside the **OpenCode Agent
 - `sglang_oom_handler.sh`: SGLang watchdog and context-length degradation recovery.
 
 ### 4. Slash Commands (`commands/`)
-`/handoff`, `/reindex`, `/review`, `/test`, `/worktree`.
+`/docs`, `/handoff`, `/reindex`, `/review`, `/test`, `/worktree`.
 
 ---
 
