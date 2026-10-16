@@ -4,16 +4,16 @@
 > The harness in this file is **AGPL-3.0-derived** material copied from the
 > upstream **open-code-harness** project, with local enhancements noted
 > in-place. Copyright (C) 2026 weignerg; License: **GNU AGPL-3.0-only**. See
-> `.opencode/NOTICE.md` and the full text at `.opencode/AGPL-3.0-LICENSE`.
+> `opencode_optional/NOTICE.md` and the full text at `opencode_optional/AGPL-3.0-LICENSE`.
 
 > ## Repo context (wow-ui-source)
-> This repo-local AGENTS.md is AUTHORITATIVE for the `.opencode/` workspace
+> This repo-local AGENTS.md is AUTHORITATIVE for the `opencode_optional/` workspace
 > whenever one is present. Note that opencode may *also* load a global
 > `~/.config/opencode/AGENTS.md` on the host; it is not guaranteed to be
 > suppressed by the framework. Duplication is therefore avoided by keeping
-> `.opencode/` authoritative and scoping the `.opencode` `instructions` to repo
-> files (see `.opencode/opencode.json`). Where the global file disagrees, the
-> repo rules below win — including repo-local vault at `.opencode/vault/`,
+> `opencode_optional/` authoritative and scoping the `opencode_optional` `instructions` to repo
+> files (see `opencode_optional/opencode.json`). Where the global file disagrees, the
+> repo rules below win — including repo-local vault at `opencode_optional/vault/`,
 > worktrees under `.opencode/worktrees/`, and addon docs under `Interface/AddOns/`.
 
 You are an autonomous AI software engineer operating inside the **OpenCode Agent Harness**, powered by high-performance local SGLang inference.
@@ -36,7 +36,7 @@ You are an autonomous AI software engineer operating inside the **OpenCode Agent
 
 ### 1. FastMCP Tools
 - `vault-memory`:
-  - `harness-tools_colbert_retrieve(query, top_k)`: CPU MaxSim semantic search over the Obsidian Knowledge Vault (`.opencode/vault`). Use for architectural decisions, entity notes, and system history.
+  - `harness-tools_colbert_retrieve(query, top_k)`: CPU MaxSim semantic search over the Obsidian Knowledge Vault (`opencode_optional/vault`). Use for architectural decisions, entity notes, and system history.
 - `worktree-manager`:
   - `worktree_create(branch, path)`: Provision an isolated git worktree.
   - `worktree_list()`: List active worktrees.
@@ -45,7 +45,7 @@ You are an autonomous AI software engineer operating inside the **OpenCode Agent
 ### 2. OpenCode Native Tools
 `read`, `edit` (surgical replacement diffs), `write`, `bash` (non-interactive), `glob`, `grep`, `skill` (load a skill by name: `skill(name="...")`), `todowrite`, `question`.
 
-### 3. Harness Scripts (`.opencode/tools/`)
+### 3. Harness Scripts (`opencode_optional/tools/`)
 - `reindex_vault.sh`: Rebuild the ColBERT vault index (`--all` or `--incremental`).
 - `worktree_manager.py`: CLI for the git worktree lifecycle.
 - `tdd_pipeline.py`: Two-stage TDD test suite.
@@ -58,7 +58,7 @@ You are an autonomous AI software engineer operating inside the **OpenCode Agent
 ---
 
 ## 📚 Skills Catalog (`skills/`)
-When a request matches a scenario below, load the skill with `skill(name="...")` (or read `.opencode/skills/<name>/SKILL.md`) before proceeding.
+When a request matches a scenario below, load the skill with `skill(name="...")` (or read `opencode_optional/skills/<name>/SKILL.md`) before proceeding.
 
 | Skill | Purpose | Trigger when |
 | :--- | :--- | :--- |
@@ -66,7 +66,7 @@ When a request matches a scenario below, load the skill with `skill(name="...")`
 | `context-anchoring` | RadixAttention context anchors, durable `TASK_HANDOFF.md` | Long multi-turn sessions, agent handoffs, preserving KV prefix |
 | `sglang-management` | SGLang status, KV-cache memory fraction, OOM recovery | Service status checks, context length errors, resetting OOM watchdog |
 | `tdd-pipeline` | Two-stage TDD verification and sandbox testing | Running unit/integration tests, parsing tracebacks, gating completion |
-| `vault-retrieval` | ColBERTv2 semantic search over the Obsidian vault | Looking up architecture decisions, entity notes, memory in `.opencode/vault` |
+| `vault-retrieval` | ColBERTv2 semantic search over the Obsidian vault | Looking up architecture decisions, entity notes, memory in `opencode_optional/vault` |
 | `worktree-lifecycle` | Isolated git worktree branching and Conventional Commit squashing | Isolating feature work, parallel agent tasks, avoiding a dirty main tree |
 
 ---

@@ -4,10 +4,10 @@ agent: orchestrator
 ---
 
 Rebuild the ColBERTv2 semantic retrieval index across the repo-local Obsidian
-knowledge vault at `.opencode/vault`:
+knowledge vault at `opencode_optional/vault`:
 
 ```bash
-.opencode/tools/reindex_vault.sh $ARGUMENTS
+opencode_optional/tools/reindex_vault.sh $ARGUMENTS
 ```
 
 Verify that the index was updated and report the indexed document count.

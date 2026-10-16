@@ -1,7 +1,7 @@
-# Dependencies — `.opencode/` external-engine requirement
+# Dependencies — `opencode_optional/` external-engine requirement
 
-This document lists the **external-engine dependencies** of the `.opencode/`
-harness. Everything else in `.opencode/` (rules, agents, skills, slash commands,
+This document lists the **external-engine dependencies** of the `opencode_optional/`
+harness. Everything else in `opencode_optional/` (rules, agents, skills, slash commands,
 the git-worktree tooling, the WOW UI addon vault) runs with just this repository
 and the local SGLang inference endpoint.
 
@@ -15,27 +15,27 @@ repository. On this machine the engine lives at:
 /WHNAS/agy/git/open-code-harness   (local source mirror)
 ```
 
-A remote URL is intentionally not referenced here; see `.opencode/NOTICE.md`.
+A remote URL is intentionally not referenced here; see `opencode_optional/NOTICE.md`.
 
-If the engine is not importable, the affected `.opencode/` features **fail fast**
+If the engine is not importable, the affected `opencode_optional/` features **fail fast**
 with an explanatory message instead of crashing silently. That behavior is what
-`.opencode/opencode.json` enforces for the two MCP servers, and what
-`.opencode/tools/reindex_vault.sh` enforces for the ColBERT reindexer.
+`opencode_optional/opencode.json` enforces for the two MCP servers, and what
+`opencode_optional/tools/reindex_vault.sh` enforces for the ColBERT reindexer.
 
 ## Required features
 
 | Feature | Role | Provider identifier | Requires |
 | --- | --- | --- | --- |
-| `vault-memory` MCP server | ColBERT semantic-memory search over `.opencode/vault` | `harness.mcp.vault_server` | engine + venv |
+| `vault-memory` MCP server | ColBERT semantic-memory search over `opencode_optional/vault` | `harness.mcp.vault_server` | engine + venv |
 | `worktree-manager` MCP server | Isolated git worktree provisioning / lifecycle | `harness.mcp.worktree_server` | engine + venv |
-| ColBERT reindexer script | Builds/refreshes `.opencode/vault/.index` | `harness.memory.colbert_engine` | engine + venv |
+| ColBERT reindexer script | Builds/refreshes `opencode_optional/vault/.index` | `harness.memory.colbert_engine` | engine + venv |
 
 All three import the `harness` package; the `venv` below is where that package
 (and the `ColUColBERTIndex`/ColBERT machinery) is importable from.
 
 ## Expected venv location
 
-The engine ships a Python virtual environment. The `.opencode/` tooling looks
+The engine ships a Python virtual environment. The `opencode_optional/` tooling looks
 for it at:
 
 ```

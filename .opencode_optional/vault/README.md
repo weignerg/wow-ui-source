@@ -8,7 +8,7 @@ architecture notes semantically on CPU only.
 ## Layout
 
 ```
-.opencode/vault/
+opencode_optional/vault/
 ├── README.md        # this file
 ├── modules/         # one documentation note per addon: <AddonName>.md
 │                   #   (authoritative, searchable knowledge)
@@ -18,27 +18,27 @@ architecture notes semantically on CPU only.
 ```
 
 - **`modules/`** holds one `.md` note per addon module. Each note is generated
-  with the `documentation` skill (`.opencode/skills/documentation/SKILL.md`)
+  with the `documentation` skill (`opencode_optional/skills/documentation/SKILL.md`)
   and follows the 5-part standard.
 - **`templates/`** holds reusable note templates. The pattern in
   `note-template.md` is the reference shape for notes written into `modules/`.
 - **`.index/`** is the ColBERTv2 index produced by the reindexer. It is a
-  build artifact and is gitignored (see `.opencode/.gitignore`).
+  build artifact and is gitignored (see `opencode_optional/.gitignore`).
 
 ## How to reindex
 
 After creating or editing notes, rebuild the index so they become searchable:
 
 ```bash
-.opencode/tools/reindex_vault.sh --all
+opencode_optional/tools/reindex_vault.sh --all
 ```
 
-This reindexes `<repo>/.opencode/vault`, where `<repo>` is the repo root
+This reindexes `<repo>/opencode_optional/vault`, where `<repo>` is the repo root
 (`git rev-parse --show-toplevel`). Override with:
 
-- `VAULT_PATH=/path/to/vault .opencode/tools/reindex_vault.sh` — reindex a
+- `VAULT_PATH=/path/to/vault opencode_optional/tools/reindex_vault.sh` — reindex a
   specific vault directory.
-- `ENGINE_REPO=/path/to/engine/host .opencode/tools/reindex_vault.sh` — point
+- `ENGINE_REPO=/path/to/engine/host opencode_optional/tools/reindex_vault.sh` — point
   the reindexer at a different ColBERT engine host. The ColBERT engine is not
   shipped in-repo, so on other machines set `ENGINE_REPO=<path-to-open-code-harness>`
   to point at the engine checkout (on this host it is auto-resolved).
@@ -52,7 +52,7 @@ with `index_dir` pointing at this vault's index:
 {
   "query": "how does the UI pulse a button border on lootable objects?",
   "top_k": 5,
-  "index_dir": ".opencode/vault/.index"
+  "index_dir": "opencode_optional/vault/.index"
 }
 ```
 

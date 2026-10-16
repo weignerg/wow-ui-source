@@ -14,7 +14,7 @@ Use this skill to execute rigorous two-stage test-driven development (TDD) verif
 ## Execution
 Run the TDD pipeline script:
 ```bash
-python3 .opencode/tools/tdd_pipeline.py
+python3 opencode_optional/tools/tdd_pipeline.py
 ```
 
 ## Traceback Analysis
