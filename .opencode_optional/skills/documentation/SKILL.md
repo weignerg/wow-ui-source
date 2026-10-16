@@ -11,7 +11,7 @@ internal Lua machinery.
 
 ## Output Location
 Write each note as a markdown file at:
-`.opencode/vault/modules/<AddonName>.md`
+`opencode_optional/vault/modules/<AddonName>.md`
 where `<AddonName>` is the addon's folder/module name (the directory name under
 `Interface/AddOns/<Name>/`). One file per addon.
 
@@ -56,6 +56,6 @@ Follow this structure, in order:
 1. Identify the addon module under `Interface/AddOns/<Name>/`.
 2. Read the module's files there.
 3. Produce the note following the sections above.
-4. Write it to `.opencode/vault/modules/<AddonName>.md`.
+4. Write it to `opencode_optional/vault/modules/<AddonName>.md`.
 5. Do **not** reindex in the same step — run `/reindex` afterward so the new
    note becomes searchable.

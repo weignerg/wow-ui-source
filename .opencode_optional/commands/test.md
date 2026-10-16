@@ -6,7 +6,7 @@ agent: tester
 Run the two-stage TDD verification pipeline on the current repository:
 
 ```bash
-python3 .opencode/tools/tdd_pipeline.py $ARGUMENTS
+python3 opencode_optional/tools/tdd_pipeline.py $ARGUMENTS
 ```
 
 Parse any test tracebacks or compiler errors and provide a summary of passed and failed stages.

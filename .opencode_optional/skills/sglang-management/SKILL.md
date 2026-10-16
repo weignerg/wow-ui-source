@@ -21,5 +21,5 @@ systemctl --user status ornith-30000.service
 ## OOM Watchdog & Context Recovery
 If an OOM occurs, `tools/sglang_oom_handler.sh` degrades context length (e.g., 256k -> 128k -> 64k) to recover service health:
 ```bash
-.opencode/tools/sglang_oom_handler.sh --reset
+opencode_optional/tools/sglang_oom_handler.sh --reset
 ```

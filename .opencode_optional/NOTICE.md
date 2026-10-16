@@ -1,14 +1,14 @@
-# NOTICE — Attribution & Licensing for `.opencode/`
+# NOTICE — Attribution & Licensing for `opencode_optional/`
 
 ## Scope of this notice
 
-This directory (`.opencode/`) contains the **OpenCode harness** shipped with the
+This directory (`opencode_optional/`) contains the **OpenCode harness** shipped with the
 `wow-ui-source` repository. It comprises the harness configuration, agent
 definitions, rules, skills, slash commands, harness scripts/tools, and the
 in-repo ColBERT knowledge vault:
 
 ```
-.opencode/
+opencode_optional/
 ├── AGENTS.md                 # authoritative harness instructions
 ├── opencode.json             # provider + MCP + agent config
 ├── agents/                   # agent role definitions
@@ -21,7 +21,7 @@ in-repo ColBERT knowledge vault:
 
 ## Derivation from upstream open-code-harness
 
-The material in `.opencode/` is **derived from and copied** (with local
+The material in `opencode_optional/` is **derived from and copied** (with local
 enhancements) from the upstream **open-code-harness** project. On this machine
 the upstream source is available as a local mirror at:
 
@@ -41,7 +41,7 @@ addon source at `Interface/AddOns/`, and the git-worktree location under
 
 - **Copyright (C) 2026 weignerg**
 - **License: GNU AGPL-3.0-only**
-- Full license text: **`.opencode/AGPL-3.0-LICENSE`**
+- Full license text: **`opencode_optional/AGPL-3.0-LICENSE`**
 
 Copied material **retains its original copyright notice and license terms** per
 AGPL-3.0 §2(b) (§6 obligations) — the `(C) 2026 weignerg` header and the full
@@ -50,7 +50,7 @@ to that material are attributed in-place within the relevant files.
 
 ## External engine dependency
 
-Several `.opencode/` features depend on the **open-code-harness /
+Several `opencode_optional/` features depend on the **open-code-harness /
 open-code-sglang-stack** engine, which is itself AGPL-3.0 and is **not vendored**
 into this repo. Those features are:
 
@@ -59,14 +59,14 @@ into this repo. Those features are:
 - the `tools/reindex_vault.sh` ColBERT reindexer (`harness.memory.colbert_engine`)
 
 For the expected runtime (the venv that supplies these importable packages), see
-**`.opencode/DEPENDENCIES.md`**. If the engine is absent, those features fail
+**`opencode_optional/DEPENDENCIES.md`**. If the engine is absent, those features fail
 fast with an explanatory message rather than silently crashing.
 
 ## Repo-level license
 
 This repository declares **no top-level software license** of its own.
 
-- The `.opencode/` harness material above remains **GNU AGPL-3.0-only** and is
-  documented here and in `.opencode/AGPL-3.0-LICENSE`.
+- The `opencode_optional/` harness material above remains **GNU AGPL-3.0-only** and is
+  documented here and in `opencode_optional/AGPL-3.0-LICENSE`.
 - The remainder of the repository is **unlicensed unless otherwise stated**
   (individual files may carry their own notice where one exists).

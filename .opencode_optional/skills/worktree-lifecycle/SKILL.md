@@ -14,7 +14,7 @@ Use this skill to create and manage isolated git worktrees for development tasks
 ## Commands & Workflows
 1. **Provision Worktree**:
    ```bash
-   python3 .opencode/tools/worktree_manager.py create --branch feat/my-feature
+   python3 opencode_optional/tools/worktree_manager.py create --branch feat/my-feature
    ```
 2. **List Worktrees**:
    ```bash
@@ -22,7 +22,7 @@ Use this skill to create and manage isolated git worktrees for development tasks
    ```
 3. **Prune Worktree**:
    ```bash
-   python3 .opencode/tools/worktree_manager.py prune --path ../feat-my-feature
+   python3 opencode_optional/tools/worktree_manager.py prune --path ../feat-my-feature
    ```
 
 When the `worktree-manager` MCP server is active, call `worktree_create`, `worktree_list`, and `worktree_remove` directly.
